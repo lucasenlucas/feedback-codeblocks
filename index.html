@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeBlocks Python Editor</title>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+  <style>
+    body {
+      background-color: #02012F;
+      color: #E5E7EB;
+      font-family: 'Fira Code', monospace;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #4fc3f7, #81c784);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    textarea#editor {
+      width: 100%;
+      height: 220px;
+      background: #0f0f3f;
+      color: #ffffff;
+      border: 2px solid #2c2c70;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 16px;
+      line-height: 1.4;
+      resize: vertical;
+      transition: border 0.3s ease;
+    }
+
+    textarea#editor:focus {
+      outline: none;
+      border-color: #4fc3f7;
+    }
+
+    button {
+      background: linear-gradient(135deg, #1e90ff, #00bcd4);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+      margin-right: 10px;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #2196f3, #26c6da);
+      transform: translateY(-2px);
+    }
+
+    #output {
+      margin-top: 25px;
+      background: #111144;
+      border: 1px solid #2c2c70;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      min-height: 120px;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #90caf9;
+    }
+
+    ::selection {
+      background: #4fc3f7;
+      color: black;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+  </style>
+</head>
+<body>
+  <h1>🧪 CodeBlocks Python Terminal</h1>
+  <textarea id="editor">print("Hallo, wereld!")</textarea>
+  <br />
+  <button onclick="runPython()">▶️ Run code</button>
+  <button onclick="saveCode()">💾 Opslaan</button>
+  <h2>📤 Uitvoer:</h2>
+  <div id="output">(Resultaat verschijnt hier)</div>
+
+  <script>
+    let pyodide;
+    async function main() {
+      pyodide = await loadPyodide();
+      loadSavedCode();
+    }
+    main();
+
+    async function runPython() {
+      const code = document.getElementById("editor").value;
+      let outputDiv = document.getElementById("output");
+      outputDiv.innerText = "";
+
+      try {
+        let outputText = "";
+        let originalPrint = console.log;
+        console.log = (msg) => {
+          outputText += msg + "\n";
+          outputDiv.innerText = outputText;
+        };
+
+        await pyodide.runPythonAsync(`
+import sys
+from js import console
+class OutputCatcher:
+  def write(self, s):
+    if s.strip() != "":
+      console.log(s)
+  def flush(self):
+    pass
+sys.stdout = sys.stderr = OutputCatcher()
+` + code);
+
+        console.log = originalPrint;
+      } catch (err) {
+        outputDiv.innerText = "❌ Fout: " + err;
+      }
+    }
+
+    function saveCode() {
+      const code = document.getElementById("editor").value;
+      localStorage.setItem("codeblocks_lesson1", code);
+      alert("Code opgeslagen in je browser!");
+    }
+
+    function loadSavedCode() {
+      const saved = localStorage.getItem("codeblocks_lesson1");
+      if (saved) document.getElementById("editor").value = saved;
+    }
+  </script>
+</body>
+</html>
