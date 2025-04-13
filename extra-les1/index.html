@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Avontuur</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      padding: 20px;
+    }
+    pre {
+      background-color: #2d2d2d;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    code {
+      color: #dcdcdc;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Extra uitdaging – een groter verhaal bouwen</h1>
+  <p>Kopieer deze code en plak het in je Python-editor:</p>
+
+  <pre><code id="pythonCode">print("Welkom bij het avontuur!")
+keuze1 = input("Je staat voor een verlaten huis. Ga je naar binnen of loop je door? ")
+
+if keuze1 == "naar binnen":
+    print("Je stapt voorzichtig naar binnen en hoort iets boven.")
+    keuze2 = input("Wil je naar boven of blijf je beneden? ")
+    if keuze2 == "naar boven":
+        print("Je ontdekt een oude zolder vol boeken.")
+    elif keuze2 == "beneden":
+        print("Je hoort voetstappen... en rent naar buiten!")
+    else:
+        print("Ongeldige keuze. Het avontuur stopt hier.")
+elif keuze1 == "loop door":
+    print("Je loopt verder en komt een mysterieuze reiziger tegen.")
+else:
+    print("Je blijft staan. Het huis verdwijnt langzaam in de mist.")</code></pre>
+
