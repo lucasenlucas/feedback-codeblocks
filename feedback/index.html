@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback - Python Masterclass</title>
+  <style>
+    body {
+      background-color: #f9f9ff;
+      font-family: 'Segoe UI', sans-serif;
+      color: #1e1e2f;
+      padding: 2rem;
+    }
+
+    .form-wrapper {
+      max-width: 650px;
+      background: white;
+      padding: 2rem;
+      margin: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 50, 0.05);
+      border-top: 10px solid #4a90e2;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    h1 span {
+      background: #4a90e2;
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      margin-left: 0.5rem;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1.5px solid #ccd6f6;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: #f0f4ff;
+    }
+
+    label {
+      margin-top: 1rem;
+      display: block;
+      font-weight: 600;
+    }
+
+    textarea {
+      resize: vertical;
+      margin-bottom: 1rem;
+    }
+
+    button[type="submit"] {
+      margin-top: 2rem;
+      background: #4a90e2;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background: #357bd1;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-wrapper">
+    <h1>Python Masterclass <span>Feedback</span></h1>
+    <form action="https://formsubmit.co/457a4d9ca5d742cd13907d04b6dd766b" method="POST">
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://codeblocks.nl/bedankt.html" />
+
+      <div class="input-group">
+        <input type="text" name="Voornaam" placeholder="Voornaam" required />
+        <input type="text" name="Leeftijd" placeholder="Leeftijd" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" name="Klas" placeholder="Klas" />
+        <input type="text" name="School" placeholder="School" />
+      </div>
+
+      <label>Wat vond je van de masterclass?</label>
+      <textarea name="Masterclass mening" rows="3"></textarea>
+
+      <label>Wat vond je van de uitleg?</label>
+      <textarea name="Uitleg feedback" rows="3"></textarea>
+
+      <label>Konden de docenten het goed uitleggen?</label>
+      <textarea name="Docenten uitleg" rows="3"></textarea>
+
+      <label>Voelde je je betrokken bij de les?</label>
+      <textarea name="Betrokkenheid" rows="3"></textarea>
+
+      <label>Hoe vond je het tempo van de les?</label>
+      <textarea name="Tempo feedback" rows="3"></textarea>
+
+      <label>Wat vond je van het werken met Python?</label>
+      <textarea name="Python ervaring" rows="3"></textarea>
+
+      <label>Zou je graag meer lessen willen volgen? Waarom?</label>
+      <textarea name="Meer lessen motivatie" rows="3"></textarea>
+
+      <label>Heb je een idee voor een project?</label>
+      <textarea name="Idee project" rows="3"></textarea>
+
+      <label>Wat kan beter?</label>
+      <textarea name="Wat kan beter" rows="3"></textarea>
+
+      <button type="submit">Verzenden</button>
+    </form>
+  </div>
+</body>
+</html>
